@@ -76,7 +76,8 @@ request = (options, event, context) => {
     var req = http.request(options, requestCallback.bind(null, context));
     
     if (event.bodyJson) {
-        req.write(decodeURIComponent(event.bodyJson));
+        console.log(JSON.stringify(event.bodyJson));
+        req.write(JSON.stringify(event.bodyJson));
     }
 
     req.on('error', function(err) {
@@ -85,5 +86,3 @@ request = (options, event, context) => {
     
     req.end();
 }
-    
-    
